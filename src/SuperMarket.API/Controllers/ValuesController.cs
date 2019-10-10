@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace SuperMarket.API.Controllers
+namespace Minimarket.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

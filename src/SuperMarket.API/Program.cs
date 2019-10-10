@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using SuperMarket.API.Domain.Db.Contexts;
+using Minimarket.API.Domain.Db.Contexts;
 
-namespace SuperMarket.API
+namespace Minimarket.API
 {
     public class Program
     {

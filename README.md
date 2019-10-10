@@ -1,1 +1,1 @@
-# SuperMarket.Core
+# Minimarket.Core

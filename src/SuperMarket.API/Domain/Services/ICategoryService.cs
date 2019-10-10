@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using SuperMarket.API.Domain.Models;
+using Minimarket.API.Domain.Models;
 
-namespace SuperMarket.API.Domain.Services
+namespace Minimarket.API.Domain.Services
 {
     public interface ICategoryService
     {

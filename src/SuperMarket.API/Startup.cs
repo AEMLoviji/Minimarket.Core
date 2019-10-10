@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SuperMarket.API.Domain.Db.Contexts;
-using SuperMarket.API.Domain.Repositories;
-using SuperMarket.API.Domain.Services;
+using Minimarket.API.Domain.Db.Contexts;
+using Minimarket.API.Domain.Repositories;
+using Minimarket.API.Domain.Services;
 
-namespace SuperMarket.API
+namespace Minimarket.API
 {
     public class Startup
     {
@@ -26,7 +26,7 @@ namespace SuperMarket.API
             
             services.AddDbContext<AppDbContext>(options =>
             {
-                options.UseInMemoryDatabase("superMarketDb");
+                options.UseInMemoryDatabase("MinimarketDb");
             });
 
             services.AddScoped<ICategoryRepository, CategoryRepository>();

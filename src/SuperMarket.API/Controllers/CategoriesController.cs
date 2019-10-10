@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using SuperMarket.API.Domain.Models;
-using SuperMarket.API.Domain.Services;
+using Minimarket.API.Domain.Models;
+using Minimarket.API.Domain.Services;
 
-namespace SuperMarket.API.Controllers
+namespace Minimarket.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

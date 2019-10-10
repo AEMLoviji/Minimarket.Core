@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace SuperMarket.API.Domain.Models
+namespace Minimarket.API.Domain.Models
 {
     public enum UnitOfMeasurement
     {

@@ -1,6 +1,6 @@
-using SuperMarket.API.Domain.Db.Contexts;
+using Minimarket.API.Domain.Db.Contexts;
 
-namespace SuperMarket.API.Domain.Repositories
+namespace Minimarket.API.Domain.Repositories
 {
     public abstract class Repository
     {

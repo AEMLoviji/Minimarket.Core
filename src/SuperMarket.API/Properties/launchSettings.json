@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "SuperMarket.API": {
+    "Minimarket.API": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "api/values",

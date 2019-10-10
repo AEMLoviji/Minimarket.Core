@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using SuperMarket.API.Domain.Models;
+using Minimarket.API.Domain.Models;
 
-namespace SuperMarket.API.Domain.Db.Contexts
+namespace Minimarket.API.Domain.Db.Contexts
 {
     public class AppDbContext : DbContext
     {
