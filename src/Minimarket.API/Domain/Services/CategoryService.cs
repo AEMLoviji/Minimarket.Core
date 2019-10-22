@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Minimarket.API.Domain.Models;
 using Minimarket.API.Domain.Repositories;
+using Minimarket.API.Domain.Services.Response;
 
 namespace Minimarket.API.Domain.Services
 {
@@ -17,6 +19,21 @@ namespace Minimarket.API.Domain.Services
         public async Task<IEnumerable<Category>> ListAsync()
         {
             return await _categoryRepository.ListAsync();
+        }
+
+        public async Task<SaveCategoryResponse> SaveAsync(Category category)
+        {
+            try
+            {
+                await _categoryRepository.AddAsync(category);
+                // TODO Unit Of Work pattern should be applied!
+
+                return new SaveCategoryResponse(category);
+            }
+            catch (Exception ex)
+            {
+                return new SaveCategoryResponse($"An error occurred when saving the category: {ex.Message}");
+            }
         }
     }
 }

@@ -38,8 +38,13 @@ namespace Minimarket.API.Controllers
                 return BadRequest(ModelState.GetErrorMessages());
 
             var category = _mapper.Map<SaveCategoryViewModel, Category>(request);
+            var result = await _categoryService.SaveAsync(category);
 
-            return StatusCode(403);
+            if (!result.Success)
+                return BadRequest(result.Message);
+
+            var categoryResource = _mapper.Map<Category, CategoryViewModel>(result.Category);
+            return Ok(categoryResource);
         }
     }
 }
