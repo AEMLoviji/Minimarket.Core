@@ -14,5 +14,13 @@ namespace Minimarket.API.Domain.Repositories
         {
             return await _context.Categories.ToListAsync();
         }
+
+        public async Task AddAsync(Category category)
+        {
+            await _context.Categories.AddAsync(category);
+
+            // TODO below line will be moved to UOW pattern based class, as it's not repository layer responsibility to apply changes to DB. 
+            _context.SaveChanges();
+        }
     }
 }

@@ -4,9 +4,8 @@ using Minimarket.API.Domain.Models;
 
 namespace Minimarket.API.Domain.Repositories
 {
-    public interface ICategoryRepository
+    public interface IUnitOfWork
     {
-        Task<IEnumerable<Category>> ListAsync();
-        Task AddAsync(Category category);
+        Task CompleteAsync();
     }
 }
