@@ -10,10 +10,12 @@ namespace Minimarket.API.Domain.Services
     public class CategoryService : ICategoryService
     {
         private readonly ICategoryRepository _categoryRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public CategoryService(ICategoryRepository categoryRepository)
+        public CategoryService(ICategoryRepository categoryRepository, IUnitOfWork unitOfWork)
         {
             this._categoryRepository = categoryRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<IEnumerable<Category>> ListAsync()
@@ -26,7 +28,7 @@ namespace Minimarket.API.Domain.Services
             try
             {
                 await _categoryRepository.AddAsync(category);
-                // TODO Unit Of Work pattern should be applied!
+                await _unitOfWork.CompleteAsync();
 
                 return new SaveCategoryResponse(category);
             }
