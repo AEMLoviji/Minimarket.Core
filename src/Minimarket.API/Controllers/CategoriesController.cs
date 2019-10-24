@@ -46,5 +46,21 @@ namespace Minimarket.API.Controllers
             var categoryResource = _mapper.Map<Category, CategoryViewModel>(result.Category);
             return Ok(categoryResource);
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutAsync(int id, [FromBody] SaveCategoryViewModel resource)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState.GetErrorMessages());
+
+            var category = _mapper.Map<SaveCategoryViewModel, Category>(resource);
+            var result = await _categoryService.UpdateAsync(id, category);
+
+            if (!result.Success)
+                return BadRequest(result.Message);
+
+            var categoryResource = _mapper.Map<Category, CategoryViewModel>(result.Category);
+            return Ok(categoryResource);
+        }
     }
 }
