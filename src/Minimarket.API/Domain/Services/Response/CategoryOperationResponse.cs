@@ -3,11 +3,11 @@ using Minimarket.API.Domain.Models;
 
 namespace Minimarket.API.Domain.Services.Response
 {
-    public class SaveCategoryResponse : BaseResponse
+    public class CategoryOperationResponse : BaseResponse
     {
         public Category Category { get; private set; }
 
-        private SaveCategoryResponse(bool success, string message, Category category) : base(success, message)
+        private CategoryOperationResponse(bool success, string message, Category category) : base(success, message)
         {
             Category = category;
         }
@@ -17,7 +17,7 @@ namespace Minimarket.API.Domain.Services.Response
         /// </summary>
         /// <param name="category">Saved category.</param>
         /// <returns>Response.</returns>
-        public SaveCategoryResponse(Category category) : this(true, string.Empty, category)
+        public CategoryOperationResponse(Category category) : this(true, string.Empty, category)
         { }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace Minimarket.API.Domain.Services.Response
         /// </summary>
         /// <param name="message">Error message.</param>
         /// <returns>Response.</returns>
-        public SaveCategoryResponse(string message) : this(false, message, null)
+        public CategoryOperationResponse(string message) : this(false, message, null)
         { }
     }
 }

@@ -8,7 +8,8 @@ namespace Minimarket.API.Domain.Services
     public interface ICategoryService
     {
         Task<IEnumerable<Category>> ListAsync();
-        Task<SaveCategoryResponse> SaveAsync(Category category);
-        Task<SaveCategoryResponse> UpdateAsync(int id, Category category);
+        Task<CategoryOperationResponse> SaveAsync(Category category);
+        Task<CategoryOperationResponse> UpdateAsync(int id, Category category);
+        Task<CategoryOperationResponse> DeleteAsync(int id);
     }
 }

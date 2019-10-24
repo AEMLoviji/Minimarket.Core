@@ -23,38 +23,57 @@ namespace Minimarket.API.Domain.Services
             return await _categoryRepository.ListAsync();
         }
 
-        public async Task<SaveCategoryResponse> SaveAsync(Category category)
+        public async Task<CategoryOperationResponse> SaveAsync(Category category)
         {
             try
             {
                 await _categoryRepository.AddAsync(category);
                 await _unitOfWork.CompleteAsync();
 
-                return new SaveCategoryResponse(category);
+                return new CategoryOperationResponse(category);
             }
             catch (Exception ex)
             {
-                return new SaveCategoryResponse($"An error occurred when saving the category: {ex.Message}");
+                return new CategoryOperationResponse($"An error occurred when saving the category: {ex.Message}");
             }
         }
 
-        public async Task<SaveCategoryResponse> UpdateAsync(int id, Category category)
+        public async Task<CategoryOperationResponse> UpdateAsync(int id, Category category)
         {
-            var existingCategory = await _categoryRepository.FindByIdAsync(id);
-            if (existingCategory == null)
-                return new SaveCategoryResponse("Category not found.");
+            var actualCategory = await _categoryRepository.FindByIdAsync(id);
+            if (actualCategory == null)
+                return new CategoryOperationResponse("Category not found.");
 
-            existingCategory.Name = category.Name;
+            actualCategory.Name = category.Name;
             try
             {
-                _categoryRepository.Update(existingCategory);
+                _categoryRepository.Update(actualCategory);
                 await _unitOfWork.CompleteAsync();
 
-                return new SaveCategoryResponse(existingCategory);
+                return new CategoryOperationResponse(actualCategory);
             }
             catch (Exception ex)
             {
-                return new SaveCategoryResponse($"An error occurred when updating the category: {ex.Message}");
+                return new CategoryOperationResponse($"An error occurred when updating the category: {ex.Message}");
+            }
+        }
+
+        public async Task<CategoryOperationResponse> DeleteAsync(int id)
+        {
+            var actualCategory = await _categoryRepository.FindByIdAsync(id);
+            if (actualCategory == null)
+                return new CategoryOperationResponse("Category not found.");
+
+            try
+            {
+                _categoryRepository.Remove(actualCategory);
+                await _unitOfWork.CompleteAsync();
+
+                return new CategoryOperationResponse(actualCategory);
+            }
+            catch (Exception ex)
+            {
+                return new CategoryOperationResponse($"An error occurred when deleting the category: {ex.Message}");
             }
         }
     }
