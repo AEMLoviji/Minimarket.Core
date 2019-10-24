@@ -2,14 +2,14 @@
  jobs:
    build:
      docker:
-       - image: microsoft/aspnetcore-build:2.0
+       - image: microsoft/aspnetcore-build:2.2
      steps:
        - checkout
        - run: 
            name: Restore packages
            command:
-             dotnet restore src/Minimarket.API
+             dotnet restore src/Minimarket.API/
        - run: 
            name: Build App
            command:
-             dotnet build src/Minimarket.API
+             dotnet build src/Minimarket.API/
