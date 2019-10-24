@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/AEMLoviji/Minimarket.Core.svg?style=svg)](https://circleci.com/gh/AEMLoviji/Minimarket.Core)
+
 # Minimarket API
 
 RESTful API built with ASP.NET Core v2.2. The main purpose was to fix and share how to create RESTful service using maintainable architecture where modules decoupled and lets features to be added easily.
