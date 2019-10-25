@@ -7,7 +7,6 @@ RUN dotnet restore
 
 # copy everything else and build app
 COPY Minimarket.API/. ./
-WORKDIR /app/Minimarket.API
 RUN dotnet publish -c Release -o out
 
 
