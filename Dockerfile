@@ -2,11 +2,11 @@ FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build-env
 WORKDIR /app
 
 # Copy csproj and restore as distinct layers
-COPY src/Minimarket.API/*.csproj ./src/Minimarket.API/
+COPY Minimarket.API/*.csproj ./Minimarket.API/
 RUN dotnet restore
 
 # Copy everything else and build
-COPY src/Minimarket.API/. ./src/Minimarket.API/
+COPY Minimarket.API/. ./Minimarket.API/
 WORKDIR /app/Minimarket.API
 RUN dotnet publish -c Release -o out
 
