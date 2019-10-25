@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
 WORKDIR /app
 
 # copy csproj and restore as distinct layers
-COPY *.sln .
+COPY Minimarket.API/*.sln .
 COPY Minimarket.API/*.csproj ./Minimarket.API/
 RUN dotnet restore
 
