@@ -9,10 +9,12 @@ namespace Minimarket.API
     {
         public static void Main(string[] args)
         {
+
+
             var host = BuildWebHost(args);
 
-            using(var scope = host.Services.CreateScope())
-            using(var context = scope.ServiceProvider.GetService<AppDbContext>())
+            using (var scope = host.Services.CreateScope())
+            using (var context = scope.ServiceProvider.GetService<AppDbContext>())
             {
                 context.Database.EnsureCreated();
             }
@@ -20,9 +22,14 @@ namespace Minimarket.API
             host.Run();
         }
 
-        public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-            .UseStartup<Startup>()
-            .Build();
+        public static IWebHost BuildWebHost(string[] args)
+        {
+            var port = Environment.GetEnvironmentVariable("PORT");
+            return
+                WebHost.CreateDefaultBuilder(args)
+                    .UseStartup<Startup>()
+                    .UseUrls("http://*:" + port)
+                    .Build();
+        }
     }
 }
