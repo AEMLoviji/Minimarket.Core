@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore;
+﻿using System;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Minimarket.API.Domain.Db.Contexts;
@@ -9,8 +10,6 @@ namespace Minimarket.API
     {
         public static void Main(string[] args)
         {
-
-
             var host = BuildWebHost(args);
 
             using (var scope = host.Services.CreateScope())
