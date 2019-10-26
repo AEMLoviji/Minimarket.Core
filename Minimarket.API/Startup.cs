@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Minimarket.API.Domain.Db.Contexts;
 using Minimarket.API.Domain.Repositories;
 using Minimarket.API.Domain.Services;
- using AutoMapper;
+using AutoMapper;
 
 namespace Minimarket.API
 {
@@ -23,7 +23,7 @@ namespace Minimarket.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);            
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddAutoMapper(typeof(Startup));
 
             services.AddDbContext<AppDbContext>(options =>
@@ -32,8 +32,10 @@ namespace Minimarket.API
             });
 
             services.AddScoped<ICategoryRepository, CategoryRepository>();
-            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IProductRepository, ProductRepository>();            
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IProductService, ProductService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

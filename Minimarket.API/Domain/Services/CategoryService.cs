@@ -14,7 +14,7 @@ namespace Minimarket.API.Domain.Services
 
         public CategoryService(ICategoryRepository categoryRepository, IUnitOfWork unitOfWork)
         {
-            this._categoryRepository = categoryRepository;
+            _categoryRepository = categoryRepository;
             _unitOfWork = unitOfWork;
         }
 
