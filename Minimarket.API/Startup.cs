@@ -8,6 +8,10 @@ using Minimarket.API.Domain.Db.Contexts;
 using Minimarket.API.Domain.Repositories;
 using Minimarket.API.Domain.Services;
 using AutoMapper;
+using Swashbuckle.AspNetCore.Swagger;
+using System;
+using System.IO;
+using System.Reflection;
 
 namespace Minimarket.API
 {
@@ -23,6 +27,29 @@ namespace Minimarket.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSwaggerGen(cfg =>
+           {
+               cfg.SwaggerDoc("v1", new Info
+               {
+                   Title = "Minimarket API",
+                   Version = "v1.0",
+                   Description = "Simple RESTful API built with ASP.NET Core 2.2 to show how to create RESTful services using a decoupled, maintainable architecture.",
+                   Contact = new Contact
+                   {
+                       Name = "Elvin Asadov",
+                       Url = "https://github.com/AEMLoviji",
+                   },
+                   License = new License
+                   {
+                       Name = "MIT",
+                   },
+               });
+
+               var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+               var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+               cfg.IncludeXmlComments(xmlPath);
+           });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddAutoMapper(typeof(Startup));
 
@@ -32,7 +59,7 @@ namespace Minimarket.API
             });
 
             services.AddScoped<ICategoryRepository, CategoryRepository>();
-            services.AddScoped<IProductRepository, ProductRepository>();            
+            services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IProductService, ProductService>();
@@ -52,6 +79,12 @@ namespace Minimarket.API
             }
 
             app.UseHttpsRedirection();
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+             {
+                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Supermarket API");
+             });
+
             app.UseMvc();
         }
     }
