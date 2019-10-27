@@ -16,5 +16,7 @@ RESTful API built with ASP.NET Core v2.2. The main purpose was to fix and share 
  - Deploys docker image to Heroku.
  
  ## Heroku
- In order to protect secrets used in deployment process HEROKU specific variables are stored as Circle-CI environment variables. https://minimarket-api.herokuapp.com 
+ In order to protect secrets used in deployment process HEROKU specific variables are stored as Circle-CI environment variables.
  
+ ## Hot to Test 
+ Navigate to https://minimarket-api.herokuapp.com/swagger to check the API definition.
