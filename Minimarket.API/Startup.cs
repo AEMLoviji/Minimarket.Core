@@ -33,7 +33,7 @@ namespace Minimarket.API
                {
                    Title = "Minimarket API",
                    Version = "v1.0",
-                   Description = "Simple RESTful API built with ASP.NET Core 2.2 to show how to create RESTful services using a decoupled, maintainable architecture.",
+                   Description = "RESTful API built with ASP.NET Core v2.2. The main purpose was to fix and share how to create RESTful service using maintainable architecture where modules decoupled and allows features to be added easily.",
                    Contact = new Contact
                    {
                        Name = "Elvin Asadov",

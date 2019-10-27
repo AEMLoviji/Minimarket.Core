@@ -27,7 +27,7 @@ namespace Minimarket.API
             return
                 WebHost.CreateDefaultBuilder(args)
                     .UseStartup<Startup>()
-                    // Heroku specific
+                     // Heroku specific - as heroku initiate application using the PORT defined in PORT environment variable.
                     .UseUrls("http://*:" + port)
                     .Build();
         }
